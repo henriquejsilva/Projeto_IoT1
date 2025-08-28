@@ -14,15 +14,14 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <input type="text" wire:model.debounce.300ms="search" class="form-control"
-                        placeholder="Buscar Sensores...">
+                    <form class="d-flex">
+
+                    <input class="form-control me-4" type="search" name="search" placeholder="Buscar por Sensor" aria-label="search" wire:model.live="search">
+                    </form>
                 </div>
                 <div class="col-md-3">
                     <select wire:model="perPage" class="form-select">
                         <option value="10">10 por página</option>
-                        <option value="25">25 por página</option>
-                        <option value="50">50 por página</option>
-                        <option value="100">100 por página</option>
                     </select>
                 </div>
             </div>
@@ -41,31 +40,73 @@
                             <th>Tipo</th>
                             <th>Descricao</th>
                             <th>Status</th>
+
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($sensores as $sensores)
+                        @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $sensores->codigo }}</td>
-                                <td>{{ $sensores->tipo }}</td>
-                                <td>{{ $sensores->descricao }}</td>
-                                <td>
-                                    <a href="{{ route('sensores.index') }}" class="btn btn-sm btn-info">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
+                                <td>{{ $sensor->codigo }}</td>
+                                <td>{{ $sensor->tipo }}</td>
+                                <td>{{ $sensor->descricao }}</td>
+                                <td>{{ $sensor->status }}</td>
 
-                                    <a href="{{ route('sensores.edit') }}" class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
+                                <td>
+                                   
+
+                                    <a href="{{ route('sensores.edit', $sensor->id) }}"
+                                    class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            <button wire:click="delete({{$sensor->id}})"
+                                    class="btn btn-sm btn-danger" onclick="return confirm('Tem Certeza')">
+                                    <i class="bi bi-person-x-fill"></i>
+                                </button>                                      
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum Sensor encontrado</td>
+                                <td colspan="5" class="text-center">Nenhum sensor encontrado</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
+
+                <div class="d-flex flex-column align-items-center mt-3">
+                        <div class="mb-2">
+                            Mostrando {{ $sensores->firstItem() }} até {{ $sensores->lastItem() }} de
+                            {{ $sensores->total() }} resultados
+                        </div>
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                             
+                                <li class="page-item {{ $sensores->onFirstPage() ? 'disabled' : '' }}">
+                                    <a href="#" class="page-link" wire:click.prevent="previousPage"
+                                        aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+
+                                @foreach ($sensores->getUrlRange(1, $sensores->lastPage()) as $page => $url)
+                                    <li class="page-item {{ $sensores->currentPage() == $page ? 'active' : '' }}">
+                                        <a href="#" class="page-link"
+                                            wire:click.prevent="gotoPage({{ $page }})">{{ $page }}</a>
+                                    </li>
+                                @endforeach
+
+                               
+                                <li class="page-item {{ $sensores->hasMorePages() ? '' : 'disabled' }}">
+                                    <a href="#" class="page-link" wire:click.prevent="nextPage" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+
+                    </div>
             </div>
         </div>
     </div>
