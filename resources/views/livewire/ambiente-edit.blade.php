@@ -45,7 +45,7 @@
 
 
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('ambientes.list') }}" class="btn btn-outline-secondary">
+                    <a href="{{ route('ambientes.index') }}" class="btn btn-outline-secondary">
                         <i class="bi bi-arrow-left-circle"></i> Voltar
                     </a>
 

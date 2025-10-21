@@ -49,13 +49,9 @@
                                 <td>{{ $ambiente->descricao }}</td>
                                 <td>{{ $ambiente->status }}</td>
                                 <td>
-                                    <a href="{{ route('ambientes.index') }}" class="btn btn-sm btn-info">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
+                                   
 
-                                    <a href="{{ route('ambientes.edit') }}" class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
+                                  
                                 </td>
                             </tr>
                         @empty

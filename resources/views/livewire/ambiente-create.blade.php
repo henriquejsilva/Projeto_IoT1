@@ -13,7 +13,7 @@
             @endif
 
            
-            <form wire:submit.prevent="update">
+            <form wire:submit.prevent="store">
                 <div class="mb-3">
                     <label class="form-label text-light"><i class="bi bi-person"></i> Nome</label>
                     <input type="text" wire:model="nome" class="form-control">
@@ -45,12 +45,12 @@
 
 
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('ambientes.list') }}" class="btn btn-outline-secondary">
+                    <a href="{{ route('ambientes.index') }}" class="btn btn-outline-secondary">
                         <i class="bi bi-arrow-left-circle"></i> Voltar
                     </a>
 
                     <button type="submit" class="btn btn-success">
-                        <i class="bi bi-check-circle"></i> Atualizar
+                        <i class="bi bi-check-circle"></i> Criar
                     </button>
                 </div>
             </form>
