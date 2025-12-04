@@ -2,7 +2,7 @@
     <div class="card shadow-lg bg-dark text-light border-0" style="width: 100%; max-width: 600px;">
         <div class="card-body">
             <h4 class="card-title mb-4 text-center text-warning">
-                <i class="bi bi-person-plus-fill"></i> Editar Ambiente. . .
+                <i class="bi bi-person-plus-fill"></i> Novo Ambiente. . .
             </h4>
 
            

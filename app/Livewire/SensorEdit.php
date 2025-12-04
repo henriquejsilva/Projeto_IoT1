@@ -37,13 +37,13 @@ class SensorEdit extends Component
         $this->status = $sensores->status;
     }
 
-     public function Atualizar()
+     public function save()
     {
         $sensores = Sensor::findOrFail($this->ambiente_id); 
         
         // $user = User::findOrFail($sensores->user->id); 
 
-        $sensores->update([
+        $sensores->save([
             'codigo' => $this->codigo, 
             'tipo' => $this->tipo,
             'descricao' => $this->descricao,
@@ -56,7 +56,7 @@ class SensorEdit extends Component
         //     $user->password = Hash::make($this->password); 
         // }
 
-        // $user->save(); 
+         $sensores->save(); 
        
 
         return redirect()->route('sensores.index')->with(['message' => 'Sensor Atualizado com sucesso']);

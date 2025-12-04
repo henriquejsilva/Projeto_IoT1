@@ -31,12 +31,12 @@ class AmbienteEdit extends Component
         $this->status = $ambiente->status;
     }
 
-    public function salvar()
+    public function save()
     {
         $ambiente = Ambiente::find($this->ambiente_id);
 
 
-        $ambiente->update([
+        $ambiente->save([
             'ambiente_id' => $this->ambiente_id,
             'nome' => $this->nome,
             'descricao' => $this->descricao,
@@ -45,7 +45,7 @@ class AmbienteEdit extends Component
        
         $ambiente->save();
         session()->flash('success', 'Ambiente Atualizado');
-        return redirect()->route('ambiente.list');
+        return redirect()->route('ambientes.index');
     }
     public function render()
     {

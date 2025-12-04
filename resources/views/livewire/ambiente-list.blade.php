@@ -49,7 +49,11 @@
                                 <td>{{ $ambiente->descricao }}</td>
                                 <td>{{ $ambiente->status }}</td>
                                 <td>
-                                   
+                                <a href="{{ route('ambientes.edit', $ambiente->id)}}" 
+                                    class="btn btn-sm btn-info">Editar</a>
+                                <button wire:click='delete({{$ambiente->id}})'
+                                    class="btn btn-danger btn-sm">Excluir</button>
+                                </td>
 
                                   
                                 </td>

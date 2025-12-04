@@ -4,6 +4,7 @@
 use App\Livewire\AmbienteCreate;
 use App\Livewire\AmbienteEdit;
 use App\Livewire\AmbienteList;
+use App\Livewire\Auth\Login;
 use App\Livewire\SensorCreate;
 use App\Livewire\SensorEdit;
 use App\Livewire\SensorIndex;
@@ -23,5 +24,7 @@ Route::prefix('sensor')->group(function () {
 });
 
 Route::get('/', Dashboard::class);
+
+Route::get('/login', Login::class)->name('login');
 
 

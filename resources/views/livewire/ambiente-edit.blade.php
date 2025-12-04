@@ -13,7 +13,7 @@
             @endif
 
            
-            <form wire:submit.prevent="update">
+            <form wire:submit.prevent="save">
                 <div class="mb-3">
                     <label class="form-label text-light"><i class="bi bi-person"></i> Nome</label>
                     <input type="text" wire:model="nome" class="form-control">
